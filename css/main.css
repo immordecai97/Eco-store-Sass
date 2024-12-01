@@ -1,0 +1,424 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #FFEFE7;
+  font-family: "IBM Plex Sans", sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  text-wrap: balance;
+  color: #7C6A0A;
+}
+
+p {
+  margin: 0;
+  text-wrap: pretty;
+}
+
+h1 {
+  font-size: 1.8em;
+}
+
+h2 {
+  font-size: 1.4em;
+  font-weight: 400;
+}
+
+h3 {
+  font-size: 1em;
+}
+
+p {
+  color: #7C6A0A;
+  text-wrap: pretty;
+  color: #7C6A0A;
+}
+
+a {
+  text-decoration: none;
+  color: #7C6A0A;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+figure {
+  margin: 0;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 19px;
+}
+
+@media (min-width: 768px) {
+  h1 {
+    font-size: 2.4em;
+  }
+  h2 {
+    font-size: 2em;
+    font-weight: 400;
+  }
+  h3 {
+    font-size: 1.5em;
+  }
+}
+nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: none;
+  row-gap: none;
+  -moz-column-gap: none;
+       column-gap: none;
+  position: sticky;
+  top: 0;
+  background-color: #FFEFE7;
+  padding: 0.4em 0;
+  width: 100%;
+  margin: 0 auto;
+  z-index: 1;
+}
+nav.scrolled {
+  box-shadow: 0px 0px 36px -10px rgba(0, 0, 0, 0.75);
+}
+nav .logo {
+  font-size: 1.5em;
+  width: 50%;
+  text-align: center;
+}
+nav .icons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: stretch;
+  gap: 0.6em;
+  row-gap: none;
+  -moz-column-gap: none;
+       column-gap: none;
+  margin: 0 auto;
+  width: 50%;
+  max-width: 140px;
+}
+nav .icons button {
+  border: none;
+  border-radius: 50%;
+  padding: 0.5em;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+nav .icons button:hover {
+  background-color: #FA9500;
+}
+@media (min-width: 768px) {
+  nav {
+    justify-content: center;
+    gap: 25em;
+  }
+  nav .logo {
+    width: auto;
+    font-size: 3em;
+  }
+  nav .icons {
+    width: auto;
+    margin: 0;
+  }
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+  gap: none;
+  row-gap: 1.5em;
+  -moz-column-gap: none;
+       column-gap: none;
+  padding: 0 0.2em;
+  margin: 0 auto;
+  margin-top: 1.2em;
+  max-width: 768px;
+}
+main .slide-content-img {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+  gap: 0.8em;
+  row-gap: none;
+  -moz-column-gap: none;
+       column-gap: none;
+}
+main .slide-content-img .content {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+  gap: 0.8em;
+  row-gap: none;
+  -moz-column-gap: none;
+       column-gap: none;
+}
+main .slide-content-img .content button {
+  background-color: #FA9500;
+  color: #FFEFE7;
+  border: none;
+  border-radius: 0.4em;
+  padding: 0.8em 1em;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+main .slide-content-img .content button:hover {
+  background-color: #BABD8D;
+}
+main .product-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+  gap: 1em;
+  row-gap: none;
+  -moz-column-gap: none;
+       column-gap: none;
+}
+main .product-section h2 {
+  margin-bottom: 1.2em;
+}
+main .about-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
+  gap: 1em;
+  row-gap: none;
+  -moz-column-gap: none;
+       column-gap: none;
+}
+main .about-section h2 {
+  text-align: center;
+  margin-bottom: 1em;
+}
+main .about-section .about-us {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+  gap: 0.5em;
+  row-gap: none;
+  -moz-column-gap: none;
+       column-gap: none;
+}
+main .about-section .about-us .mini-cards {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 0.5em;
+  row-gap: none;
+  -moz-column-gap: none;
+       column-gap: none;
+}
+main .about-section .about-us .mini-cards div {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 0.5em;
+  row-gap: none;
+  -moz-column-gap: none;
+       column-gap: none;
+  text-align: center;
+}
+main .about-section .about-us .mini-cards div img {
+  max-width: 10rem;
+}
+main .about-section .about-us .mini-cards div p {
+  font-size: 1.3em;
+  color: #FA9500;
+}
+main .about-section .gallery {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+  gap: 1em;
+  row-gap: none;
+  -moz-column-gap: none;
+       column-gap: none;
+}
+main .about-section .gallery .imgs {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+  gap: 1em;
+  row-gap: none;
+  -moz-column-gap: none;
+       column-gap: none;
+}
+main .about-section .gallery .imgs figure {
+  aspect-ratio: 1/1;
+  border-radius: 19px;
+  overflow: hidden;
+}
+main .about-section .gallery .imgs figure img {
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+main .about-section .location p {
+  color: #FA9500;
+  font-size: 1em;
+}
+main .cards-section {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(100px, 1fr));
+  grid-template-rows: none;
+  gap: 1em;
+  row-gap: none;
+  -moz-column-gap: none;
+       column-gap: none;
+  justify-items: stretch;
+  align-items: stretch;
+  justify-content: start;
+  align-content: start;
+}
+main .cards-section .product-card {
+  position: relative;
+  z-index: -1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+  gap: 0.5em;
+  row-gap: none;
+  -moz-column-gap: none;
+       column-gap: none;
+  padding-bottom: 0.6em;
+  background-color: #FFDAC6;
+  border-radius: 1em;
+}
+main .cards-section .product-card .icon {
+  position: absolute;
+  top: 3px;
+  right: 3px;
+  color: #FFEFE7;
+  border: none;
+  border-radius: 50%;
+  padding: 0.5em;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+main .cards-section .product-card .icon:hover {
+  background-color: #BABD8D;
+}
+main .cards-section .product-card .product-img {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: stretch;
+  gap: none;
+  row-gap: none;
+  -moz-column-gap: none;
+       column-gap: none;
+}
+main .cards-section .product-card h3,
+main .cards-section .product-card .product-info {
+  padding-left: 0.1em;
+  padding-right: 0.1em;
+}
+main .cards-section .product-card .product-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+  gap: 0.4em;
+  row-gap: none;
+  -moz-column-gap: none;
+       column-gap: none;
+  font-size: 0.8rem;
+}
+@media (min-width: 768px) {
+  main .slide-content-img {
+    flex-direction: row;
+  }
+  main .slide-content-img .content {
+    width: 60%;
+    justify-content: center;
+  }
+  main .slide-content-img .content h1 {
+    font-size: 2.4em;
+  }
+  main .slide-content-img .content p {
+    font-size: 1.5em;
+  }
+  main .slide-content-img .content button {
+    font-size: 1em;
+  }
+  main .slide-content-img .img {
+    width: 40%;
+  }
+  main .product-section h2 {
+    margin-bottom: 2em;
+  }
+  main .about-section .about-us .mini-cards {
+    flex-direction: row;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  main .about-section .about-us .mini-cards div {
+    flex-direction: row;
+    width: 50%;
+  }
+  main .about-section .gallery .imgs {
+    flex-direction: row;
+  }
+  main .about-section .gallery .imgs figure {
+    width: 50%;
+  }
+  main .about-section .location p {
+    font-size: 1.5em;
+  }
+  main .cards-section {
+    grid-template-columns: repeat(3, minmax(100px, 1fr));
+  }
+  main .cards-section .product-card .icon {
+    top: 10px;
+    right: 10px;
+  }
+}
+
+footer {
+  background-color: #FA9500;
+  padding: 2em 1.5em;
+  margin-top: 1em;
+}
+footer h3, footer p {
+  color: #FFEFE7;
+}
+footer p:last-of-type {
+  margin-bottom: 2em;
+}
+footer figure {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: stretch;
+  gap: 1em;
+  row-gap: none;
+  -moz-column-gap: none;
+       column-gap: none;
+}
+@media (min-width: 768px) {
+  footer h3, footer p {
+    font-size: 1.4em;
+  }
+  footer figure {
+    gap: 3rem;
+  }
+}/*# sourceMappingURL=main.css.map */

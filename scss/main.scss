@@ -1,0 +1,428 @@
+// ---------------------------------------------------------------------- Variables
+$primary-color: #FFEFE7;
+$secondary-color: #FFDAC6;
+$tertiary-color: #BABD8D;
+$quaternary-color: #FA9500;
+$primary-text-color: #7C6A0A;
+$font-stack: "IBM Plex Sans", sans-serif;
+
+// ---------------------------------------------------------------------- General
+body {
+	margin: 0;
+	padding: 0;
+	background-color: $primary-color;
+	font-family: $font-stack;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	margin: 0;
+	text-wrap: balance;
+	color: $primary-text-color;
+}
+
+p {
+	margin: 0;
+	text-wrap: pretty;
+}
+
+h1 {
+	font-size: 1.8em;
+}
+
+h2 {
+	font-size: 1.4em;
+	font-weight: 400;
+}
+h3 {
+	font-size: 1em;
+}
+
+p {
+	color: $primary-text-color;
+	text-wrap: pretty;
+	color: $primary-text-color;
+}
+
+a {
+	text-decoration: none;
+	color: $primary-text-color;
+}
+
+ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
+figure {
+	margin: 0;
+}
+
+img {
+	max-width: 100%;
+	height: auto;
+	border-radius: 19px;
+}
+@media (min-width: 768px){
+	h1 {
+		font-size: 2.4em;
+	}
+	
+	h2 {
+		font-size: 2em;
+		font-weight: 400;
+	}
+	h3 {
+		font-size: 1.5em;
+	}
+}
+
+// ---------------------------------------------------------------------- Mixins
+// NOTA: if() -> sus parametros son: (condicion, valor: verdadero, valor: falso)
+// NOTA: map-has-key() -> sus parametros son: (mapa, clave): true||false
+// NOTA: map-get() -> sus parametros son: (mapa, clave): valor||null
+@mixin displayFlex($options: ()) {
+	display: flex;
+	flex-direction: if(map-has-key($options, 'direction'), map-get($options, 'direction'), row);
+	justify-content: if(map-has-key($options, 'justify'), map-get($options, 'justify'), flex-start);
+	align-items: if(map-has-key($options, 'align'), map-get($options, 'align'), stretch);
+	gap: if(map-has-key($options, 'gap'), map-get($options, 'gap'), none);
+	row-gap: if(map-has-key($options, 'rowGap'), map-get($options, 'rowGap'), none);
+	column-gap: if(map-has-key($options, 'columnGap'), map-get($options, 'columnGap'), none);
+}
+
+@mixin displayGrid($options: ()) {
+	display: grid;
+	grid-template-columns: if(map-has-key($options, 'columns'), map-get($options, 'columns'), none);
+	grid-template-rows: if(map-has-key($options, 'rows'), map-get($options, 'rows'), none);
+	gap: if(map-has-key($options, 'gap'), map-get($options, 'gap'), none);
+	row-gap: if(map-has-key($options, 'rowGap'), map-get($options, 'rowGap'), none);
+	column-gap: if(map-has-key($options, 'columnGap'), map-get($options, 'columnGap'), none);
+	justify-items: if(map-has-key($options, 'justifyItems'), map-get($options, 'justifyItems'), stretch);
+	align-items: if(map-has-key($options, 'alignItems'), map-get($options, 'alignItems'), stretch);
+	justify-content: if(map-has-key($options, 'justifyContent'), map-get($options, 'justifyContent'), start);
+	align-content: if(map-has-key($options, 'alignContent'), map-get($options, 'alignContent'), start);
+}
+
+// --------------------------------------------- Navbar
+nav {
+	@include displayFlex((
+	'direction': row,
+	'justify': space-between,
+	'align': center
+	));
+	position: sticky;
+	top: 0;
+	background-color: $primary-color;
+	padding: 0.4em 0;
+	width: 100%;
+	margin: 0 auto;
+	z-index: 1;
+
+	&.scrolled{
+		box-shadow: 0px 0px 36px -10px rgba(0, 0, 0, 0.75);
+	}
+
+	.logo {
+		font-size: 1.5em;
+		width: 50%;
+		text-align: center;
+	}
+	
+	.icons {
+		@include displayFlex((
+		'justify': center,
+		'gap': .6em
+		));
+		margin: 0 auto;
+		width: 50%;
+		max-width: 140px;
+		button {
+			border: none;
+			border-radius: 50%;
+			padding: 0.5em;
+			cursor: pointer;
+			transition: background-color 0.3s;
+			&:hover { // & -> parent selector: hace referencia al selector padre (button)
+				background-color: $quaternary-color;
+			}
+		}
+	}
+	
+	@media (min-width: 768px){
+		justify-content: center;
+		gap: 25em;
+		.logo {
+			width: auto;
+			font-size: 3em;
+		}
+		.icons {
+			width: auto;
+			margin: 0;
+		}
+	}
+	
+}
+
+// --------------------------------------------- Main
+main {
+	@include displayFlex((
+	'direction': column,
+	'rowGap': 1.5em
+	));
+	padding: 0 .2em;
+	margin: 0 auto;
+	margin-top: 1.2em;
+	max-width: 768px;
+	// --------------------------------------------- Slide section
+	.slide-content-img {
+		@include displayFlex((
+		'direction': column,
+		'gap': .8em
+		));
+		.content {
+			@include displayFlex((
+			'direction': column,
+			'gap': .8em
+			));
+			button {
+				background-color: $quaternary-color;
+				color: $primary-color;
+				border: none;
+				border-radius: .4em;
+				padding: .8em 1em;
+				cursor: pointer;
+				transition: background-color 0.3s;
+				&:hover {
+					background-color: $tertiary-color;
+				}
+			}
+		}
+	}
+	
+	// --------------------------------------------- Product section
+	.product-section {
+		@include displayFlex((
+		'direction': column,
+		'gap': 1em
+		));
+		
+		h2 {
+			margin-bottom: 1.2em;
+		}
+	}
+	
+	// --------------------------------------------- About us section
+	.about-section {
+		@include displayFlex((
+		'direction': column,
+		'justify': center,
+		'gap': 1em
+		));
+		
+		h2 {
+			text-align: center;
+			margin-bottom: 1em;
+		}
+		
+		.about-us {
+			@include displayFlex((
+			'direction': column,
+			// 'align': center,
+			'gap': .5em
+			));
+			
+			.mini-cards {
+				@include displayFlex((
+				'direction': column,
+				'align': center,
+				'gap': .5em
+				));
+				div {
+					@include displayFlex((
+					'direction': column,
+					'align': center,
+					'gap': .5em
+					));
+					text-align: center;
+					img {
+						max-width: 10rem;
+					}
+					p {
+						font-size: 1.3em;
+						color: $quaternary-color;
+					}
+					
+				}
+			}
+		}
+		.gallery {
+			@include displayFlex((
+			'direction': column,
+			'gap': 1em
+			));
+			
+			.imgs {
+				@include displayFlex((
+				'direction': column,
+				'gap': 1em
+				));
+				figure {
+					aspect-ratio: 1/1;
+					border-radius: 19px;
+					overflow: hidden;
+					
+					img {
+						object-fit: cover;
+					}
+				}
+			}
+		}
+		.location p {
+			color: $quaternary-color;
+			font-size: 1em;
+		}
+	}
+	
+	// --------------------------------------------- Grid of cards
+	.cards-section {
+		@include displayGrid((
+		'columns': repeat(2, minmax(100px, 1fr)),
+		'gap': 1em
+		));
+		
+		.product-card {
+			position: relative;
+			z-index: -1;
+			@include displayFlex((
+			'direction': column,
+			'gap': .5em
+			));
+			padding-bottom: .6em;
+			background-color: $secondary-color;
+			border-radius: 1em;
+			
+			.icon {
+				position: absolute;
+				top: 3px;
+				right: 3px;
+				color: $primary-color;
+				border: none;
+				border-radius: 50%;
+				padding: 0.5em;
+				cursor: pointer;
+				transition: background-color 0.3s;
+				&:hover {
+					background-color: $tertiary-color;
+				}
+			}
+			
+			.product-img {
+				@include displayFlex((
+				'justify': center
+				));
+			}
+			
+			h3,
+			.product-info {
+				padding-left: .1em;
+				padding-right: .1em;
+			}
+			
+			.product-info {
+				@include displayFlex((
+				'direction': column,
+				'gap': .4em
+				));
+				font-size: .8rem;
+			}
+		}
+	}
+	
+	@media (min-width: 768px){
+		.slide-content-img {
+			flex-direction: row;
+			.content {
+				width: 60%;
+				justify-content: center;
+				h1 {
+					font-size: 2.4em;
+				}
+				p {
+					font-size: 1.5em;
+				}
+				button {
+					font-size: 1em;
+				}
+			}
+			.img {
+				width: 40%;
+			}
+		}
+		
+		.product-section h2 {
+			margin-bottom: 2em;
+		}
+		
+		.about-section {
+			.about-us {
+				.mini-cards {
+					flex-direction: row;
+					padding-left: 1rem;
+					padding-right: 1rem;
+					div {
+						flex-direction: row;
+						width: 50%;
+					}
+				}
+			}
+			.gallery .imgs {
+				flex-direction: row;
+				figure {
+					width: 50%;
+				}
+			}
+			.location p {
+				font-size: 1.5em;
+			}
+		}
+		
+		.cards-section {
+			grid-template-columns: repeat(3, minmax(100px, 1fr));
+			.product-card .icon {
+				top: 10px;
+				right: 10px;
+			}
+		}
+	}
+}
+
+// ---------------------------------------------------------------------- Footer
+footer {
+	background-color: $quaternary-color;
+	padding: 2em 1.5em;
+	margin-top: 1em;
+	h3, p {
+		color: $primary-color;
+	}
+	
+	p:last-of-type {
+		margin-bottom: 2em;
+	}
+	
+	figure {
+		@include displayFlex((
+		'justify': center,
+		'gap': 1em
+		));
+	}
+
+	@media (min-width: 768px){
+		h3, p {
+			font-size: 1.4em;
+		}
+		figure {
+			gap: 3rem;
+		}
+	}
+}
